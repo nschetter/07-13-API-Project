@@ -1,6 +1,7 @@
 require 'pry'
 require 'sinatra'
 require 'sinatra/reloader'
+require "sinatra/json"
 
 require 'sqlite3'
 require_relative 'database_setup.rb'

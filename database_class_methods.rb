@@ -1,70 +1,81 @@
 require "active_support"
 require "active_support/inflector"
 
-# This module will be extended in all classes. It contains methods
-# that will become class methods for the class.
+module DatabaseClassMethods
 
-module DatabaseClassMethods  
+  # Selects all information from a database table
+  #
+  # Returns an Array of Objects
+  def all
+    table = self.to_s.pluralize.underscore
+
+    results = DATABASE.execute("SELECT * FROM #{table};")
+
+    store_results = []
+
+    results.each do |hash|
+      store_results << self.new(hash)
+    end
+
+    return store_results
+
+  end
   
-  # Adds a new record to the database.
-  #
-  #
-  # Return an Integer of ID of inserted row.
-  def add_to_database(options={})
-    table_name = self.to_s.pluralize.underscore
+  def all_hash
+    table = self.to_s.tableize
     
-    column_names = options.keys
-    column_names_for_sql = column_names.join(", ")
+    results = DATABASE.execute("SELECT * FROM #{table};")
     
+    return results
+    
+  end
+
+  # Locates an existing row in a table
+  #
+  # record_id - Integer indicating the primary key for the row
+  #
+  # Returns an Object
+  def find(record_id)
+    table = self.to_s.pluralize.underscore
+
+    results = DATABASE.execute("SELECT * FROM #{table} WHERE id = #{record_id};").first
+
+    self.new(results)
+  end
+
+  # Creates a new row in a given table in the database
+  #
+  # options - Hash containing information about the Object (attributes
+  #           and values)
+  #
+  # Returns the new Object
+  def add(options = {})
+
+    columns = options.keys
     values = options.values
+
+    columns_for_sql = columns.join(", ")
     individual_values_for_sql = []
-    
+
     values.each do |value|
       if value.is_a?(String)
         individual_values_for_sql << "'#{value}'"
       else
-        individual_values_for_sql << "#{value}"
+        individual_values_for_sql << value
       end
     end
-    values_for_sql = individual_values_for_sql.join(", ") 
 
-    DATABASE.execute("INSERT INTO #{table_name} (#{column_names_for_sql}) VALUES (#{values_for_sql});")
-    options["id"] = DATABASE.last_insert_row_id
+    values_for_sql = individual_values_for_sql.join(", ")
+
+    table = self.to_s.pluralize.underscore
+
+    DATABASE.execute("INSERT INTO #{table} (#{columns_for_sql}) VALUES (#{values_for_sql});")
+
+    id = DATABASE.last_insert_row_id
+
+    options["id"] = id
+
     self.new(options)
   end
-  
-  
-  # Get a single row.
-  #
-  # id - The ID.
-  #
-  # Returns an Array containing the Hash of the row.
-  def find(record_id)    
-    # Figure out the table's name from the class we're calling the method on.
-    table_name = self.to_s.pluralize.underscore
-    results = DATABASE.execute("SELECT * FROM #{table_name} WHERE id = #{id}").first
-    self.new(results)
-  end
-  
-  
-  
-  # Get all of the rows for a table.
-  #
-  # Returns an Array containing objects for each row.
-  def all
-    # Figure out the table's name from the class we're calling the method on.
-    table_name = self.to_s.pluralize.underscore
-    
-    results = DATABASE.execute("SELECT * FROM #{table_name}")
 
-    results_as_objects = []
-    
-    results.each do |result_hash|
-      results_as_objects << self.new(result_hash)
-    end
-    
-    return results_as_objects
-  end
-  
-  
 end
