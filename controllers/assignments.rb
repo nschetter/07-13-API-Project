@@ -1,5 +1,5 @@
 # This pulls from the main page, and sends the user to the assignment_main page.
-get '/assignment_main' do
+get '/assignments/assignment_main' do
   erb :'assignments/assignment_main'
 end
 
@@ -22,3 +22,4 @@ get '/assignment_list' do
   @assignment_list = DATABASE.execute('SELECT * FROM assignments') 
   erb :"/assignments/assignment_list"
 end
+
