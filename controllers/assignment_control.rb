@@ -8,8 +8,6 @@ get "/assignment_add_form" do
   erb :"/assignments/assignment_add_form"
 end
 
-# This pulls from the assignment main page, and sends the user to the assignment_add page.
-# This page allows the user to add a new assignment name
 get '/assignment_add' do
   # new_assignment_id is the Integer returned from the add method
   @new_assignment_id = Assignment.add_to_database(params)
