@@ -13,3 +13,4 @@ require_relative 'models/student_assignment.rb'
 
 require_relative 'controllers/home.rb'
 require_relative 'controllers/assignments.rb'
+require_relative 'controllers/students.rb'

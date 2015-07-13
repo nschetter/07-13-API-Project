@@ -7,4 +7,3 @@ DATABASE.execute("CREATE TABLE IF NOT EXISTS students (id INTEGER PRIMARY KEY, n
 DATABASE.execute("CREATE TABLE IF NOT EXISTS students_assignments (id INTEGER PRIMARY KEY, assignment_id INTEGER, student_id INTEGER);")
  
 DATABASE.results_as_hash = true
-

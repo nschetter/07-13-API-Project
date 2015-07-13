@@ -1,0 +1,12 @@
+<h1> Update A Student </h1>
+
+<form action ="/assignments/assignment_save">
+  
+  <p> 
+  Name: <input type="text" name= "name" placeholder="name" value="<%= params["name"] %>">
+  <input type="hidden" name = "x" value=" <%= params["x"] %>">
+  
+  <input type="submit" value="update">
+  </p>  
+  
+</form>
