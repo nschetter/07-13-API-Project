@@ -2,7 +2,7 @@ class Assignment
   extend DatabaseClassMethods
   include DatabaseInstanceMethods
   
-  attr_accessor :id, :date, :name, :description, :blog_link, :github_link, :student_id
+  attr_accessor :id, :date, :name, :description, :blog_link, :github_link
   
   def initialize(id)
     @id = id
