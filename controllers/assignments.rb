@@ -8,13 +8,13 @@ get "/assignment_add_form" do
   erb :"/assignments/assignment_add_form"
 end
 
-get '/assignment_add' do
+get '/assignments/assignment_add' do
   # new_assignment_id is the Integer returned from the add method
-  @new_assignment_id = Assignment.add_to_database(params)
+  @new_assignment_id = Assignment.add(params)
   erb :"/success/data_added"
 end
 
-get '/assignment_change' do
+get '/assignments/assignment_change' do
   erb :"/assignments/assignment_change"
 end
 
