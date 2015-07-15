@@ -38,8 +38,8 @@ get '/assignment_delete' do
 end
 
 get "/assignment_deleter" do
-  @assignment = Assignment.find(params['id'].to_i)
-  @assignment.delete
+  @specific_assignment = Assignment.find(params["id"])
+  @specific_assignment.delete
   erb :"/success/data_deleted"
 end
 

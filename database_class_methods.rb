@@ -21,6 +21,11 @@ module DatabaseClassMethods
 
   end
   
+  def table
+    
+    self.name.downcase.pluralize   
+  end
+  
   def all_hash
     table = self.to_s.tableize
     
@@ -36,11 +41,9 @@ module DatabaseClassMethods
   #
   # Returns an Object
   def find(record_id)
-    table = self.to_s.pluralize.underscore
+    result = DATABASE.execute("SELECT * FROM #{table} WHERE id = #{record_id}").first
 
-    results = DATABASE.execute("SELECT * FROM #{table} WHERE id = #{record_id};").first
-
-    self.new(results)
+    self.new(result)
   end
 
   # Creates a new row in a given table in the database
