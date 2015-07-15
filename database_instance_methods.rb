@@ -12,7 +12,8 @@ module DatabaseInstanceMethods
     table = self.to_s.pluralize.underscore
 
     result = DATABASE.execute("SELECT * FROM #{table} WHERE id = #{@id}").first
-
+  end
+  
   def to_hash
     hash = {}
     instance_variables = self.instance_variables
@@ -20,9 +21,6 @@ module DatabaseInstanceMethods
       hash["#{variable.slice(1..-1)}"] = self.send("#{variable.slice(1..-1)}")
     end
     return hash
-  end
-      
-    result[field]
   end
 
   # Deletes a row from a table
@@ -38,30 +36,7 @@ module DatabaseInstanceMethods
   #
   # Returns updated Object
   def save
-    table = self.class.to_s.pluralize.underscore
-
-    instance_variables = self.instance_variables
-
-    attribute_hash = {}
-
-    instance_variables.each do |variable|
-      attribute_hash["#{variable.slice(1..-1)}"] = self.send("#{variable.slice(1..-1)}")
-    end
-
-    individual_instance_variables = []
-
-    attribute_hash.each do |key, value|
-      if value.is_a?(String)
-        individual_instance_variables << "#{key} = '#{value}'"
-      else
-        individual_instance_variables << "#{key} = #{value}"
-      end
-    end
-
-    for_sql = individual_instance_variables.join(', ')
-    DATABASE.execute("UPDATE #{table} SET #{for_sql} WHERE id = #{self.id}")
-
-    return self
+    DATABASE.execute("UPDATE #{table} SET name = '#{name}' WHERE id = #{@id};")
   end
 
 end
