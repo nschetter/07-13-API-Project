@@ -1,0 +1,9 @@
+<h1>Student List</h1>
+
+<ul>
+  <% @student.each do |item| %>
+    <li><%= "#{item.id} - #{item.name}" %></li>
+  <% end %>
+</ul>
+
+<p><a href="/home">Go to home page</a></p>

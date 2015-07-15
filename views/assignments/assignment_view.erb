@@ -1,0 +1,9 @@
+<h1>Assignment List</h1>
+
+<ul>
+  <% @assignment.each do |assign| %>
+    <li><%= "#{assign.id} - #{assign.description} - #{assign.github_link} - #{assign.blog_link}" %></li>
+  <% end %>
+</ul>
+
+<p><a href="/home">Go to home page</a></p>

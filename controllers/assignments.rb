@@ -18,6 +18,11 @@ get '/assignments/assignment_change' do
   erb :"/assignments/assignment_change"
 end
 
-get '/assignment_delete' do
+get '/assignments/assignment_delete' do
   erb :"/assignments/assignment_delete"
+end
+
+get "/assignment_view" do
+  @assignment = Assignment.all
+  erb :"/assignments/assignment_view"
 end
