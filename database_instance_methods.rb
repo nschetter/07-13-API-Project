@@ -29,9 +29,7 @@ module DatabaseInstanceMethods
   #
   # Returns true/false Boolean
   def delete
-    table = self.class.to_s.pluralize.underscore
-
-    DATABASE.execute("DELETE FROM #{table} WHERE id = #{@id};")
+      DATABASE.execute("DELETE FROM #{table} WHERE id = #{@id};")
   end
 
   # Updates/saves a row's information in a table

@@ -37,6 +37,12 @@ get '/assignment_delete' do
   erb :"/assignments/assignment_delete"
 end
 
+get "/assignment_deleter" do
+  @assignment = Assignment.find(params['id'].to_i)
+  @assignment.delete
+  erb :"/success/data_deleted"
+end
+
 get "/assignment_view" do
   @assignment = Assignment.all
   erb :"/assignments/assignment_view"

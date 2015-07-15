@@ -1,8 +1,13 @@
 <h3>Delete Assignment</h3>
 
   <p><h4>Choose a report to delete:</h4></p>
-  <% @assignment.each do |assign| %>
-  <%= "#{assign.id} - #{assign.description} - #{assign.github_link} - #{assign.blog_link}" %>
-  <% end %>
+  
+  <form action="/assignment_deleter">
+  
+    <% Assignment.all.each do |assignment| %>
+        <input type="radio" name="id" value="<%= assignment.id %>">
+        <%= assignment.date%> <%= assignment.name%>
+    <% end %>
+    <p><input type="submit"></p>
     
 <p><a href = "/home">Return To Main Menu</a><p>
