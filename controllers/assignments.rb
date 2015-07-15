@@ -23,7 +23,7 @@ get "/assignment_update" do
   erb :"/assignments/assignment_update"
 end
 
-get "/update_assignment/save" do
+get "/assignment_update/save" do
   @assignment = Assignment.find(params['id'].to_i)
   @assignment.date = params["date"]
   @assignment.name = params["name"]

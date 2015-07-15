@@ -4,8 +4,9 @@ class Student
   
   attr_accessor :id, :name
   
-  def initialize(id)
-    @id = id
+  def initialize(hash={})
+    @id = hash["id"]
+    @name = hash["name"]
   end #end initialize
   
   def add(options={})
