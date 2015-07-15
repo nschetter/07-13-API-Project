@@ -15,10 +15,25 @@ get '/assignments/assignment_add' do
 end
 
 get '/assignments/assignment_change' do
+  @assignment = Assignment.find(params["id"].to_i)
   erb :"/assignments/assignment_change"
 end
 
-get '/assignments/assignment_delete' do
+get "/assignment_update" do
+  erb :"/assignments/assignment_update"
+end
+
+get "/update_assignment/save" do
+  @assignment = Assignment.find(params['id'].to_i)
+  @assignment.date = params["date"]
+  @assignment.name = params["name"]
+  @assignment.description = params["description"]
+  @assignment.github_link = params["github_link"]
+  @assignment.blog_link = params["blog_link"]
+  erb :"/success/data_changed"
+end
+
+get '/assignment_delete' do
   erb :"/assignments/assignment_delete"
 end
 

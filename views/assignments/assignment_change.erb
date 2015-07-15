@@ -1,19 +1,19 @@
-<h1> Update An Assignment </h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignments</title>
+</head>
+<body>
+  <h2>Update Assignment</h2>
 
-<form action ="/assignments/assignment_save">
-  
-  <p> 
-  Name: <input type="text" name= "name" placeholder="name" value="<%= params["name"] %>">
-
-  Description: <input type="text" name= "description" placeholder="description" value="<%= params["description"] %>">
-
-  Blog Link: <input type="text" name= "blog_link" value="<%= params["blog_link"] %>">
-  
-  Github Link: <input type="text" name= "github_link" value="<%= params["github_link"] %>">
-  
-  <input type="hidden" name = "x" value=" <%= params["x"] %>">
-  
-  <input type="submit" value="update">
-  </p>  
-  
-</form>
+  <form action="/update_assignment/save">
+    <input type="hidden" name="id" value="<%= @assignment.id %>">
+    <p><input type="text" placeholder="Name" name="name" value="<%= @assignment.name %>"></p>
+    <p><input type="text" placeholder="Date" name="date" value="<%= @assignment.date %>"></p>
+    <p><input type="text" placeholder="Description" name="description" value="<%= @assignment.description %>"></p>
+    <p><input type="text" placeholder="Github" name="github_link" value="<%= @assignment.github_link %>"></p>
+    <p><input type="text" placeholder="Blog" name="blog_link" value="<%= @assignment.blog_link %>"></p>
+    <p><input type="submit"></p>
+    <form>
+</body>
+</html>

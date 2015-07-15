@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignments</title>
+</head>
+<body>
+  <h2>Select the assignment to change</h2> 
+  <form action="/assignments/assignment_change">
+
+    <% Assignment.all.each do |assignment| %>
+        <input type="radio" name="id" value="<%= assignment.id %>">
+        <%= assignment.date%> <%= assignment.name%>
+    <% end %>
+    <p><input type="submit"></p>
+  </form> 
+<body>
+</html>

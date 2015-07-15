@@ -1,7 +1,8 @@
 <h3>Delete Assignment</h3>
 
   <p><h4>Choose a report to delete:</h4></p>
-  <% Assignment.all.each do |item| %>
+  <% @assignment.each do |assign| %>
+  <%= "#{assign.id} - #{assign.description} - #{assign.github_link} - #{assign.blog_link}" %>
   <% end %>
     
 <p><a href = "/home">Return To Main Menu</a><p>
