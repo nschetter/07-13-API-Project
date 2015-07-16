@@ -26,17 +26,13 @@ module DatabaseInstanceMethods
   # Deletes a row from a table
   #
   # Returns true/false Boolean
+  def table
+    self.class.to_s.pluralize.underscore
+  end
+      
+  # Deletes an entry from the database.
   def delete
-    table_name = self.class.to_s.pluralize.underscore
-
-    DATABASE.execute("DELETE FROM #{table_name} WHERE id = #{@id}")
+     DATABASE.execute("DELETE FROM #{table} WHERE id = #{@id};")
   end
-
-  # Updates/saves a row's information in a table
-  #
-  # Returns updated Object
-  def save
-    DATABASE.execute("UPDATE #{table} SET name = '#{name}' WHERE id = #{@id};")
-  end
-
+  
 end

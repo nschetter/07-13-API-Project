@@ -13,4 +13,8 @@ class Student
     self.add_to_database(options)
   end
   
+  def save
+    return true if DATABASE.execute("UPDATE #{table} SET name = '#{name}' WHERE id = #{@id};")
+  end
+  
 end

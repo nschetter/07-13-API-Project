@@ -17,4 +17,8 @@ class Assignment
     self.add_to_database(options)
   end
   
+  def save
+    return true if DATABASE.execute("UPDATE #{table} SET name = '#{name}', date = '#{date}', description = '#{description}', blog_link = '#{blog_link}', github_link = '#{github_link}' WHERE id = #{@id};")
+  end
+  
 end

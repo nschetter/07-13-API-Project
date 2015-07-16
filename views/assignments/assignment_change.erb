@@ -8,11 +8,11 @@
 
   <form action="/assignment_update/save">
     <input type="hidden" name="id" value="<%= @assignment.id %>">
-    <p><input type="text" placeholder="Name" name="name" value="<%= @assignment.name %>"></p>
-    <p><input type="text" placeholder="Date" name="date" value="<%= @assignment.date %>"></p>
-    <p><input type="text" placeholder="Description" name="description" value="<%= @assignment.description %>"></p>
-    <p><input type="text" placeholder="Github" name="github_link" value="<%= @assignment.github_link %>"></p>
-    <p><input type="text" placeholder="Blog" name="blog_link" value="<%= @assignment.blog_link %>"></p>
+    <p>Name:<input type="text" placeholder="Name" name="name" value="<%= @assignment.name %>"></p>
+    <p>Date:<input type="text" placeholder="Date" name="date" value="<%= @assignment.date %>"></p>
+    <p>Description:<input type="text" placeholder="Description" name="description" value="<%= @assignment.description %>"></p>
+    <p>Github Link<input type="text" placeholder="Github" name="github_link" value="<%= @assignment.github_link %>"></p>
+    <p>Blog Link<input type="text" placeholder="Blog" name="blog_link" value="<%= @assignment.blog_link %>"></p>
     <p><input type="submit"></p>
     <form>
 </body>

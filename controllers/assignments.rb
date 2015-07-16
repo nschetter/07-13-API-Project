@@ -30,7 +30,12 @@ get "/assignment_update/save" do
   @assignment.description = params["description"]
   @assignment.github_link = params["github_link"]
   @assignment.blog_link = params["blog_link"]
-  erb :"/success/data_changed"
+  if @assignment.save
+    erb :"/success/data_changed"
+  else
+    @error = true
+    erb :"/assignments/assignment_update"
+  end
 end
 
 get '/assignment_delete' do

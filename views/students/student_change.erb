@@ -1,12 +1,19 @@
 <h1> Update A Student </h1>
 
-<form action ="/assignments/assignment_save">
+<form action ="/students/student_save">
   
-  <p> 
-  Name: <input type="text" name= "name" placeholder="name" value="<%= params["name"] %>">
-  <input type="hidden" name = "x" value=" <%= params["x"] %>">
-  
-  <input type="submit" value="update">
-  </p>  
-  
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Students</title>
+</head>
+<body>
+  <h2>Update Student Name</h2>
+
+  <form action="/student_update/save">
+    <input type="hidden" name="id" value="<%= @student.id %>">
+    <p>Name:<input type="text" placeholder="Name" name="name" value="<%= @student.name %>"></p>
+    <p><input type="submit"></p>
+    <form>
+</body>
+</html>
