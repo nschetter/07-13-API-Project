@@ -15,12 +15,8 @@ module DatabaseInstanceMethods
   end
   
   def to_hash
-    hash = {}
-    instance_variables = self.instance_variables
-    instance_variables.each do |variable|
-      hash["#{variable.slice(1..-1)}"] = self.send("#{variable.slice(1..-1)}")
-    end
-    return hash
+    results = DATABASE.execute("SELECT * FROM #{table} WHERE id = #{@id};")
+    return results
   end
 
   # Deletes a row from a table

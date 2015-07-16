@@ -18,7 +18,6 @@ module DatabaseClassMethods
     end
 
     return store_results
-
   end
   
   def table
@@ -30,9 +29,7 @@ module DatabaseClassMethods
     table = self.to_s.tableize
     
     results = DATABASE.execute("SELECT * FROM #{table};")
-    
     return results
-    
   end
 
   # Locates an existing row in a table

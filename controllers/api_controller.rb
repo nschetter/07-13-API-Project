@@ -8,3 +8,8 @@ get "/api/assignments/:id" do
   @assignment = selected_assignment.to_hash
   json @assignment
 end
+
+get "/api/links/:column" do
+  @links = Assignment.select(params["column"])
+  json @links
+end
