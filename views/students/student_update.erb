@@ -1,12 +1,17 @@
-<h3>Delete Student</h3>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Students</title>
+</head>
+<body>
+  <h2>Select the student to change</h2> 
+  <form action="/students/student_change">
 
-  <p><h4>Choose a student to delete:</h4></p>
-  
-  <form action="/student_deleter">
     <% Student.all.each do |student| %>
         <input type="radio" name="id" value="<%= student.id %>">
         <%= student.name%>
     <% end %>
     <p><input type="submit"></p>
-    
-<p><a href = "/home">Return To Main Menu</a><p>
+  </form> 
+<body>
+</html>

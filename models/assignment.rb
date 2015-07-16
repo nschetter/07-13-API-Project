@@ -14,7 +14,7 @@ class Assignment
   end #end initialize
   
   def add(options={})
-    self.add_to_database(options)
+    self.add(options)
   end
   
   def save
